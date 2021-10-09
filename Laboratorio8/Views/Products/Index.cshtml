@@ -1,0 +1,23 @@
+﻿@{
+    string dataOrigin = Url.Content("~/Products/GetAllProducts");
+} 
+<head>
+    <link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator.min.css" rel="stylesheet">
+</head>
+<body>
+<h1> WELCOME </h1>
+<input type="button" value="Show Products" onclick="getProducts()" />
+<div id="ProductsContext" class="clusterize">
+    <table id="mainTable">
+    </table>
+</div>
+</body>
+<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+<script src="~/js/DataTable.js" type="text/javascript"></script>
+<script type="text/javascript">
+    let productsContext = document.getElementById("ProductsContext");
+    const dataTable = new DataTable("@dataOrigin", productsContext);
+    function getProducts() {
+        dataTable.fillContext();
+    }
+</script>
